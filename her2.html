@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our 3rd Monthsary</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;400;500&display=swap');
+
+        :root {
+            --primary: #d4af37;
+            --accent: #ff85a1;
+            --bg-dark: #0b090a;
+            --card-bg: rgba(22, 19, 20, 0.65);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--bg-dark);
+            font-family: 'Montserrat', sans-serif;
+            color: #f5f3f4;
+            overflow-x: hidden;
+        }
+
+        .background-glow {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 133, 161, 0.08) 0%, rgba(0,0,0,0) 70%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            width: 90%;
+            max-width: 550px;
+            perspective: 1000px;
+        }
+
+        .luxury-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 30px;
+            padding: 4rem 3rem;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            animation: slideUpIn 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .monogram {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.4rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            display: block;
+            opacity: 0.8;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            font-size: 3rem;
+            line-height: 1.1;
+            margin: 0 0 2rem 0;
+            background: linear-gradient(135deg, #ffffff 30%, #ffccd5 70%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .divider {
+            width: 40px;
+            height: 1px;
+            background: var(--primary);
+            margin: 0 auto 2rem auto;
+            opacity: 0.5;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-box {
+            padding: 1rem 0;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--accent);
+            display: block;
+            font-weight: 600;
+        }
+
+        .stat-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15rem;
+            color: #b3b3b3;
+            margin-top: 0.25rem;
+            display: block;
+        }
+
+        .love-letter {
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: #d3d3d3;
+            font-weight: 200;
+            margin: 0 0 3rem 0;
+        }
+
+        .love-letter span {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: var(--primary);
+        }
+
+        .action-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.2rem 3rem;
+            background: transparent;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+            border: 1px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .action-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .action-link:hover {
+            border-color: transparent;
+            box-shadow: 0 10px 30px rgba(214, 175, 87, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .action-link:hover::before {
+            opacity: 1;
+        }
+
+        .action-link svg {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+            fill: currentColor;
+        }
+
+        .action-link:hover svg {
+            transform: translateX(4px);
+        }
+
+        @keyframes slideUpIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .luxury-card {
+                padding: 3rem 1.5rem;
+            }
+            h1 {
+                font-size: 2.3rem;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-glow"></div>
+
+    <div class="container">
+        <div class="luxury-card">
+            <span class="monogram">III • MMXVI</span>
+            <h1>happy 3rd monthsary My love</h1>
+            
+            <div class="divider"></div>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Months</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">90</span>
+                    <span class="stat-label">Days</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">2,160</span>
+                    <span class="stat-label">Hours</span>
+                </div>
+            </div>
+
+            <p class="love-letter">
+                Every single second of these past three months has been an absolute treasure. 
+                With you, I have found a partnership that feels completely effortless and endlessly inspiring. 
+                Thank you for your warmth, your beautiful mind, and for <span>making my world infinitely brighter</span>.
+            </p>
+
+            <a href="https://www.instagram.com/stories/highlights/18056955602727718/" class="action-link">
+                Explore Our Vault
+                <svg width="12" height="12" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/stories/highlights/18294859186304922/" class="action-link">
+                Explore Other Moments
+                <svg width="12" height="12" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
